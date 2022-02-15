@@ -1,8 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Shared/Navigation";
+import LoginPage from "./pages/admin/LoginPage";
+
 function App() {
   return (
-    <main>
-      <h1>Local Shoppers | Admin Portal</h1>
-    </main>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<LoginPage />} exact />
+      </Routes>
+    </Router>
   );
 }
 
