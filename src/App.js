@@ -7,6 +7,7 @@ import HomePage from "./pages/admin/HomePage";
 import LoginPage from "./pages/admin/LoginPage";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import CategoryPage from "./pages/categories/CategoryPage";
+import NotFoundPage from "./pages/core/NotFoundPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             }
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </Router>
