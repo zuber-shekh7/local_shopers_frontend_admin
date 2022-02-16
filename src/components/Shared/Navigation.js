@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { adminLogout } from "../../actions/adminActions";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 
 const Navigation = () => {
   const { user } = useSelector((state) => state.adminLogin);
@@ -18,20 +19,7 @@ const Navigation = () => {
         {/* logo and brand name */}
         <div>
           <Link to="/" className="flex items-center space-x-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              />
-            </svg>
+            <HiOutlineShoppingBag className="h-8 w-8" />
             <span className="text-2xl font-bold ">Local Shoppers</span>
             <span className="text-sm">Admin</span>
           </Link>
