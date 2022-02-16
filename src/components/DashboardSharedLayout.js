@@ -1,16 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
+  HiOutlineMenu,
   HiOutlineHome,
   HiOutlineUsers,
   HiOutlineViewGrid,
   HiOutlineQuestionMarkCircle,
-  HiOutlineMenu,
 } from "react-icons/hi";
 
-const DashboardPage = () => {
-  const { user } = useSelector((state) => state.adminLogin);
+const DashboardSharedLayout = () => {
   return (
     <main className="bg-gray-200">
       <section className="flex flex-1">
@@ -66,18 +64,11 @@ const DashboardPage = () => {
         </div>
         {/* dashboard content */}
         <div className="m-10 flex-1">
-          <div className="bg-indigo-400 py-10 px-10 rounded-lg w-full">
-            <h2 className="text-4xl text-white font-bold">
-              👋🏼 Hi {user.firstName}
-            </h2>
-            <p className="mt-5 font-white text-xl text-gray-200">
-              Hope that you are feeling happy and healthy today
-            </p>
-          </div>
+          <Outlet />
         </div>
       </section>
     </main>
   );
 };
 
-export default DashboardPage;
+export default DashboardSharedLayout;
