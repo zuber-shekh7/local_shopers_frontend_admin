@@ -32,7 +32,7 @@ const LoginPage = () => {
 
   return (
     <main className="mt-10 md:mt-20 h-screen">
-      <section className="grid grid-cols-1 md:grid-cols-2  px-10">
+      <section className="grid grid-cols-1 md:grid-cols-2 px-10">
         <div>
           <section className="max-w-md mx-auto mt-10 bg-gray-100 p-10 rounded-xl shadow-lg">
             <form onSubmit={handleSubmit}>
@@ -72,6 +72,9 @@ const LoginPage = () => {
                 >
                   Login
                 </button>
+              </div>
+              <div>
+                {error && <h4 className="text-center text-red-500">{error}</h4>}
               </div>
             </form>
           </section>
