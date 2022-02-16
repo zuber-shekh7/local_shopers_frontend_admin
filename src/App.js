@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/Shared/Routes/ProtectedRoute";
 import HomePage from "./pages/admin/HomePage";
 import LoginPage from "./pages/admin/LoginPage";
 import CategoriesPage from "./pages/categories/CategoriesPage";
+import CategoryPage from "./pages/categories/CategoryPage";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CategoriesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="categories/:category_id"
+            element={
+              <ProtectedRoute>
+                <CategoryPage />
               </ProtectedRoute>
             }
           />
