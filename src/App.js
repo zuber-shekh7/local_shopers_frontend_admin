@@ -4,6 +4,7 @@ import Navigation from "./components/Shared/Navigation";
 import ProtectedRoute from "./components/Shared/Routes/ProtectedRoute";
 import DashboardPage from "./pages/admin/DashboardPage";
 import LoginPage from "./pages/admin/LoginPage";
+import CategoriesPage from "./pages/categories/CategoriesPage";
 
 function App() {
   return (
@@ -11,9 +12,24 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<LoginPage />} exact />
-        <Route exact path="admin" element={<ProtectedRoute />}>
-          <Route exact path="account" element={<DashboardPage />} />
-        </Route>
+        <Route
+          exact
+          path="/admin/account"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/admin/categories"
+          element={
+            <ProtectedRoute>
+              <CategoriesPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </Router>
