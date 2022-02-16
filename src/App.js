@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/Shared/Footer";
 import Navigation from "./components/Shared/Navigation";
 import ProtectedRoute from "./components/Shared/Routes/ProtectedRoute";
 import DashboardPage from "./pages/admin/DashboardPage";
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="account" element={<DashboardPage />} />
         </Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }
