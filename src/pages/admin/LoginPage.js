@@ -75,6 +75,7 @@ const LoginPage = () => {
               </div>
               <div>
                 {error && <h4 className="text-center text-red-500">{error}</h4>}
+                {loading && <h4 className="text-cente">Loading...</h4>}
               </div>
             </form>
           </section>

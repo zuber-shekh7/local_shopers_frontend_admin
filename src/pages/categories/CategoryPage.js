@@ -33,7 +33,11 @@ const CategoryPage = () => {
             </span>
           </Link>
           {category.image ? (
-            <img className="h-64 rounded-lg mb-5" src={category.image} alt="" />
+            <img
+              className="h-64 rounded-lg mb-5 object-cover"
+              src={category.image}
+              alt=""
+            />
           ) : (
             <div className="h-64 rounded-lg bg-gray-400 flex items-center justify-center mb-5">
               <h2 className="text-white font-medium">Upload Image</h2>

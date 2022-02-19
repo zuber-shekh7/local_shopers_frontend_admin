@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getBusinessCategories } from "../../actions/businessCategoryActions";
+import { HiOutlinePlus } from "react-icons/hi";
 
 const CategoriesPage = () => {
   const { loading, categories, error } = useSelector(
@@ -22,6 +23,14 @@ const CategoriesPage = () => {
         {error && <h2 className="text-red-500">{error}</h2>}
         {categories && categories.length > 0 && (
           <div className="bg-white p-10 rounded-lg shadow-lg">
+            <div className="flex justify-end mb-5">
+              <Link
+                className="border-2 p-2 border-indigo-500 rounded-full"
+                to="/admin/categories/new"
+              >
+                <HiOutlinePlus className="h-6 w-6 text-indigo-500" />
+              </Link>
+            </div>
             <table className="table-auto divide-y divide-gray-200">
               <thead>
                 <tr>

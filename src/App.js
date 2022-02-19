@@ -7,6 +7,7 @@ import HomePage from "./pages/admin/HomePage";
 import LoginPage from "./pages/admin/LoginPage";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import CategoryPage from "./pages/categories/CategoryPage";
+import CreateCategoryPage from "./pages/categories/CreateCategoryPage";
 import NotFoundPage from "./pages/core/NotFoundPage";
 
 function App() {
@@ -31,6 +32,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CategoriesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="categories/new"
+            element={
+              <ProtectedRoute>
+                <CreateCategoryPage />
               </ProtectedRoute>
             }
           />
