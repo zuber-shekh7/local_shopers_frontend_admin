@@ -8,6 +8,7 @@ import LoginPage from "./pages/admin/LoginPage";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import CategoryPage from "./pages/categories/CategoryPage";
 import CreateCategoryPage from "./pages/categories/CreateCategoryPage";
+import EditCategoryPage from "./pages/categories/EditCategoryPage";
 import NotFoundPage from "./pages/core/NotFoundPage";
 
 function App() {
@@ -40,6 +41,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CreateCategoryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="categories/:category_id/edit"
+            element={
+              <ProtectedRoute>
+                <EditCategoryPage />
               </ProtectedRoute>
             }
           />

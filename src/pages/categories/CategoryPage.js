@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getBusinessCategory } from "../../actions/businessCategoryActions";
-import { HiOutlineArrowSmLeft } from "react-icons/hi";
+import { HiOutlineArrowSmLeft, HiOutlinePencil } from "react-icons/hi";
 
 const CategoryPage = () => {
   const { loading, category, error } = useSelector(
@@ -24,14 +24,25 @@ const CategoryPage = () => {
       {error && <h1 className="text-red-500">{error}</h1>}
       {category && (
         <div className="bg-white p-10 rounded-lg shadow-lg w-96">
-          <Link
-            className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
-            to="/admin/categories"
-          >
-            <span>
-              <HiOutlineArrowSmLeft className="h-6 w-6" />
-            </span>
-          </Link>
+          <div className="flex justify-between">
+            <Link
+              className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
+              to="/admin/categories"
+            >
+              <span>
+                <HiOutlineArrowSmLeft className="h-6 w-6" />
+              </span>
+            </Link>
+            <Link
+              className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
+              to={`/admin/categories/${category._id}/edit`}
+            >
+              <span>
+                <HiOutlinePencil className="h-6 w-6" />
+              </span>
+            </Link>
+          </div>
+
           {category.image ? (
             <img
               className="h-64 rounded-lg mb-5 object-cover"
