@@ -5,6 +5,7 @@ import {
   editBusinessCategoryReducer,
   getBusinessCategoriesReducer,
   getBusinessCategoryReducer,
+  deleteBusinessCategoryReducer,
 } from "./businessCategoryReducers";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   createBusinessCategory: { category: null },
   getBusinessCategory: { category: null },
   editBusinessCategory: { category: null },
+  deleteBusinessCategory: { success: null },
 };
 
 const rootReducer = combineReducers({
@@ -28,6 +30,7 @@ const rootReducer = combineReducers({
   createBusinessCategory: createBusinessCategoryReducer,
   getBusinessCategory: getBusinessCategoryReducer,
   editBusinessCategory: editBusinessCategoryReducer,
+  deleteBusinessCategory: deleteBusinessCategoryReducer,
 });
 
 export default rootReducer;

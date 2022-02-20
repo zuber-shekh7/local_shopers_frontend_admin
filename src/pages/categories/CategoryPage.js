@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { getBusinessCategory } from "../../actions/businessCategoryActions";
-import { HiOutlineArrowSmLeft, HiOutlinePencil } from "react-icons/hi";
+import { Link, Navigate, useParams } from "react-router-dom";
+import {
+  deleteBusinessCategory,
+  getBusinessCategory,
+} from "../../actions/businessCategoryActions";
+import {
+  HiOutlineArrowSmLeft,
+  HiOutlinePencil,
+  HiOutlineTrash,
+} from "react-icons/hi";
+import Modal from "../../components/Shared/Modal";
 
 const CategoryPage = () => {
+  const [open, setOpen] = useState(false);
+
+  const { deleteLoading, success, deleteError } = useSelector(
+    (state) => state.deleteBusinessCategory
+  );
+
   const { loading, category, error } = useSelector(
     (state) => state.getBusinessCategory
   );
@@ -14,16 +28,39 @@ const CategoryPage = () => {
 
   const dispatch = useDispatch();
 
+  const handleModalOnClick = () => {
+    setOpen(!open);
+  };
+
   useEffect(() => {
     dispatch(getBusinessCategory(category_id));
   }, [dispatch, category_id]);
 
+  const handleSubmit = () => {
+    dispatch(deleteBusinessCategory(category._id));
+    setOpen(false);
+  };
+
+  if (success) {
+    return <Navigate to="/admin/categories" />;
+  }
+
   return (
     <div className="flex justify-center">
-      {loading && <h1>Loading...</h1>}
-      {error && <h1 className="text-red-500">{error}</h1>}
+      {(loading || deleteLoading) && <h1>Loading...</h1>}
+      {(error || deleteError) && (
+        <h1 className="text-red-500">{error || deleteError}</h1>
+      )}
       {category && (
         <div className="bg-white p-10 rounded-lg shadow-lg w-96">
+          <Modal
+            show={open}
+            onClick={handleModalOnClick}
+            onSubmit={handleSubmit}
+            title={`Are you sure you want to delete ${category.name}?`}
+            description="Once you delete this item, you won't be able to access it further."
+            cta="Confirm Delete"
+          />
           <div className="flex justify-between">
             <Link
               className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
@@ -33,14 +70,24 @@ const CategoryPage = () => {
                 <HiOutlineArrowSmLeft className="h-6 w-6" />
               </span>
             </Link>
-            <Link
-              className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
-              to={`/admin/categories/${category._id}/edit`}
-            >
-              <span>
-                <HiOutlinePencil className="h-6 w-6" />
-              </span>
-            </Link>
+            <div className="flex space-x-2">
+              <Link
+                className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
+                to={`/admin/categories/${category._id}/edit`}
+              >
+                <span>
+                  <HiOutlinePencil className="h-6 w-6" />
+                </span>
+              </Link>
+              <button
+                className="inline-block p-2 bg-white-100 border-2 border-gray-500 rounded-full text-gray-500 mb-5"
+                onClick={() => setOpen(true)}
+              >
+                <span>
+                  <HiOutlineTrash className="h-6 w-6" />
+                </span>
+              </button>
+            </div>
           </div>
 
           {category.image ? (
