@@ -9,6 +9,7 @@ import CategoriesPage from "./pages/categories/CategoriesPage";
 import CategoryPage from "./pages/categories/CategoryPage";
 import CreateCategoryPage from "./pages/categories/CreateCategoryPage";
 import EditCategoryPage from "./pages/categories/EditCategoryPage";
+import HelpPage from "./pages/core/HelpPage";
 import NotFoundPage from "./pages/core/NotFoundPage";
 import CustomersPage from "./pages/customers/CustomersPage";
 import SellersPage from "./pages/sellers/SellersPage";
@@ -79,6 +80,15 @@ function App() {
               </ProtectedRoute>
             }
             exact
+          />
+          <Route
+            exact
+            path="help"
+            element={
+              <ProtectedRoute>
+                <HelpPage />
+              </ProtectedRoute>
+            }
           />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
