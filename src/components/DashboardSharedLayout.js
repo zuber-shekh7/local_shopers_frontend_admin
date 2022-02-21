@@ -39,7 +39,7 @@ const DashboardSharedLayout = () => {
             <div className="px-5 py-4 hover:bg-indigo-600">
               <Link
                 className="text-xl font-medium text-white flex items-center gap-2"
-                to="/admin/account"
+                to="/admin/sellers"
               >
                 <HiOutlineUsers className="inline h-6 w-6" /> Sellers
               </Link>
