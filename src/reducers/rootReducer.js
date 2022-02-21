@@ -7,6 +7,7 @@ import {
   getBusinessCategoryReducer,
   deleteBusinessCategoryReducer,
 } from "./businessCategoryReducers";
+import { getCustomersReducer } from "./customerReducers";
 
 const initialState = {
   adminLogin: {
@@ -22,6 +23,7 @@ const initialState = {
   getBusinessCategory: { category: null },
   editBusinessCategory: { category: null },
   deleteBusinessCategory: { success: null },
+  getCustomers: { customers: null },
 };
 
 const rootReducer = combineReducers({
@@ -31,6 +33,7 @@ const rootReducer = combineReducers({
   getBusinessCategory: getBusinessCategoryReducer,
   editBusinessCategory: editBusinessCategoryReducer,
   deleteBusinessCategory: deleteBusinessCategoryReducer,
+  getCustomers: getCustomersReducer,
 });
 
 export default rootReducer;

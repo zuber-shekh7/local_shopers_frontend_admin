@@ -10,6 +10,7 @@ import CategoryPage from "./pages/categories/CategoryPage";
 import CreateCategoryPage from "./pages/categories/CreateCategoryPage";
 import EditCategoryPage from "./pages/categories/EditCategoryPage";
 import NotFoundPage from "./pages/core/NotFoundPage";
+import CustomersPage from "./pages/customers/CustomersPage";
 
 function App() {
   return (
@@ -59,6 +60,15 @@ function App() {
                 <CategoryPage />
               </ProtectedRoute>
             }
+          />
+          <Route
+            path="customers"
+            element={
+              <ProtectedRoute>
+                <CustomersPage />
+              </ProtectedRoute>
+            }
+            exact
           />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
